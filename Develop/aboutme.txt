@@ -1,6 +1,0 @@
-{
-	"user": "marr",
-	"colors": "blue",
-	"loc": "san antonio, tx",
-	"namee": "marisol"
-}

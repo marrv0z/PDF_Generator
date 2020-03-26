@@ -1,32 +1,4 @@
-const colors = {
-  green: {
-    wrapperBackground: "#E6E1C3",
-    headerBackground: "#C1C72C",
-    headerColor: "black",
-    photoBorderColor: "black"
-  },
-  blue: {
-    wrapperBackground: "#5F64D3",
-    headerBackground: "#26175A",
-    headerColor: "white",
-    photoBorderColor: "#73448C"
-  },
-  pink: {
-    wrapperBackground: "#879CDF",
-    headerBackground: "#FF8374",
-    headerColor: "white",
-    photoBorderColor: "#FEE24C"
-  },
-  red: {
-    wrapperBackground: "#DE9967",
-    headerBackground: "#870603",
-    headerColor: "white",
-    photoBorderColor: "white"
-  }
-};
-
-function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locURL) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,7 +24,7 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       height: 100%;
       }
       .wrapper {
-      background-color: ${colors[data.color].wrapperBackground};
+      background-color: #E6E1C3;
       padding-top: 100px;
       }
       body {
@@ -94,8 +66,8 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      background-color: ${colors[data.color].headerBackground};
-      color: ${colors[data.color].headerColor};
+      background-color: #C1C72C;
+      color: black;
       padding: 10px;
       width: 95%;
       border-radius: 6px;
@@ -106,7 +78,7 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       border-radius: 50%;
       object-fit: cover;
       margin-top: -75px;
-      border: 6px solid ${colors[data.color].photoBorderColor};
+      border: 6px solid black;
       box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
       }
       .photo-header h1, .photo-header h2 {
@@ -149,8 +121,8 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       .card {
         padding: 20px;
         border-radius: 6px;
-        background-color: ${colors[data.color].headerBackground};
-        color: ${colors[data.color].headerColor};
+        background-color: #C1C72C;
+        color: black;
         margin: 20px;
       }
       
@@ -177,11 +149,11 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       <div class = "row">
         <div class = "col">
           <div class = "photo-header">
-            <img class = "photo-header img" src = "${avaURL}">
+            <img class = "photo-header img" src = "undefined">
             <h1> </h1>
-            <h1>${data.name}</h1>
-            <h2><a href = "${locURL}">${userLoc}</a></h2>
-            <h2><a href = "https://github.com/${data.user}">GitHub</a></h2>
+            <h1>Kristian Rodriguez</h1>
+            <h2><a href = "undefined">undefined</a></h2>
+            <h2><a href = "https://github.com/marrv0z">GitHub</a></h2>
             
           </div>
         </div>
@@ -190,16 +162,16 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       <div class = "row">
         <div class = "col">
           <div class = "card">
-            <p>Followers: ${followers}</p>
+            <p>Followers: undefined</p>
           </div>
           <div class = "card">
-            <p>Following: ${following}</p>
+            <p>Following: undefined</p>
           </div>
         </div>
 
         <div class = "col">
           <div class = "card">
-            <p>Public Repos: ${repoInf}</p>
+            <p>Public Repos: undefined</p>
           </div>
           <div class = "card">
             <p>Stars: </p>
@@ -208,7 +180,4 @@ function generateHTML(data, avaURL, followers, following, repoInf, userLoc, locU
       </div>
 
     </div>
-   </body>`
-}
-
-module.exports = generateHTML;
+   </body>

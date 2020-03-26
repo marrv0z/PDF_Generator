@@ -52,7 +52,8 @@ function init() {
     inquirer.prompt(questions).then(function(dataSet){
 
         var githubURL1 = `https://api.github.com/users/${dataSet.user}`;
-        var githubURL2 = `https://api.github.com/users/${dataSet.user}/starred`
+        const locationURL = `https://www.google.com/maps/place/${dataSet.loc}`
+        //var githubURL2 = `https://api.github.com/users/${dataSet.user}/starred`
 
         axios.get(githubURL1).then(function(response){
             var followers = response.data.followers;
@@ -78,7 +79,7 @@ function init() {
             
             });
 
-            pdf.create(genHTML(dataSet)).toFile(`./${dataSet.user}.pdf`, function(err, res) {
+            pdf.create(genHTML(dataSet, imgURL, followers, following, repos, dataSet.loc, locationURL)).toFile(`./${dataSet.user}.pdf`, function(err, res) {
                 if (err) return console.log(err);
                  console.log(res); 
             });
