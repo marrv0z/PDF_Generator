@@ -51,25 +51,47 @@ const questions = [
 function init() {
     inquirer.prompt(questions).then(function(dataSet){
 
-        var githubURL = `https://api.github.com/users/${dataSet.user}`;
+        var githubURL1 = `https://api.github.com/users/${dataSet.user}`;
+        var githubURL2 = `https://api.github.com/users/${dataSet.user}/starred`
 
-        axios.get(githubURL).then(function(response){
+        axios.get(githubURL1).then(function(response){
             var followers = response.data.followers;
             var following = response.data.following;
+            var imgURL = response.data.avatar_url;
+            var repos = response.data.public_repos;
             console.log(response.data);
 
-            console.log(followers);
-            console.log(following);
+            // axios.get(githubURL2).then(function(resp){
+            //     console.log(resp.data);
+            // });
+
+            //console.log(followers);
+            //console.log(following);
+
+            fs.writeFile(`${dataSet.user}.html`,genHTML(dataSet), function(err) {
+
+                if (err) {
+                  return console.log(err);
+                }
+            
+                console.log("Success!");
+            
+            });
+
+            pdf.create(genHTML(dataSet)).toFile(`./${dataSet.user}.pdf`, function(err, res) {
+                if (err) return console.log(err);
+                 console.log(res); 
+            });
         })
 
-        fs.writeFile("aboutme.pdf", JSON.stringify(dataSet, null, '\t'), function(err) {
+        // fs.writeFile("aboutme.pdf", JSON.stringify(dataSet, null, '\t'), function(err) {
 
-            if (err) {
-              return console.log(err);
-            }
+        //     if (err) {
+        //       return console.log(err);
+        //     }
         
-            console.log("Success!");
-        });
+        //     console.log("Success!");
+        // });
     });
 }
 
